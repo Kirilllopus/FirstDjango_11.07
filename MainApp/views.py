@@ -21,5 +21,10 @@ def snippets_page(request):
         }
     return render(request, 'pages/view_snippets.html', context)
 
-def snippet_detail(request):
-    pass
+def snippet_detail(request, snippet_id):
+    snippet = Snippet.object.get(id=snippet_id)
+    context = {
+        'pagename': 'Просмотр сниппета',
+        'snippets': snippet
+        }
+    return render(request, 'pages/snippets_detail.html', context)
