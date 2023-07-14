@@ -19,4 +19,5 @@ class Snippet(models.Model):
     # True - public, False - private
     public = models.BooleanField(default=True)
 
-
+    def __str__(self):
+            return f'{self.__class__.__name__}{self.name, self.lang}'
