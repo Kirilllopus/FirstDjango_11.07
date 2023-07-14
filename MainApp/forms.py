@@ -30,7 +30,7 @@ class UserRegistrationForm(ModelForm):
 
     def clean_username(self):
         username = self.cleaned_data.get("username")
-        if len(username) > 3:
+        if len(username) > 4:
             return username
         raise ValidationError('Bad username')
 
@@ -39,7 +39,7 @@ class UserRegistrationForm(ModelForm):
         pass2 = self.cleaned_data.get("password2")
         if pass1 and pass2 and pass1 == pass2:
             return pass2
-        raise ValidationError("Пароли не совпадают или пустые")
+        raise ValidationError("Пароли не совпадают")
 
     def save(self, commit=True):
         user = super().save(commit=False)

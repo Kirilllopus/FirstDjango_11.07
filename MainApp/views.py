@@ -96,7 +96,7 @@ def snippet_edit(request, snippet_id):
 
 
 def create_user(request):
-    context = {'pagename': 'Регистрация пользователя'}
+    context = {'pagename': 'Регистрация'}
     if request.method == "GET":
         form = UserRegistrationForm()
         context["form"] = form
