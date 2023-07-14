@@ -1,18 +1,23 @@
-from django.forms import ModelForm, Textarea, TextInput
+from django.forms import ModelForm, TextInput, Textarea
 from MainApp.models import Snippet
 from django.contrib.auth.models import User
 from django.forms import CharField, PasswordInput
 from django.core.exceptions import ValidationError
 
+
 class SnippetForm(ModelForm):
     class Meta:
         model = Snippet
+        # Описываем поля, которые будем заполнять в форме
         fields = ['name', 'lang', 'code', 'public']
-        labels = {'name': '', 'lang': '', 'code': '', 'public': ''}
+        labels = {'name': '', 'lang': '', 'code': ''}
         widgets = {
             'name': TextInput(attrs={'placeholder': 'Название сниппета'}),
             'code': Textarea(attrs={'placeholder': 'Код сниппета'})
         }
+        # С помощью exclude можно указать поля, которые нужно исключить
+        # Вместе fields и exclude использовать нельзя
+        # exclude = ['lang']
 
 
 class UserRegistrationForm(ModelForm):
